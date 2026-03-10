@@ -31,7 +31,10 @@ jobs:
 
     - name: Create Release Package
       run: |
-        Compress-Archive -Path ".\Terra\bin\x64\Release\Terra\*" -DestinationPath "latest.zip" -Force
+        # Move into the folder so the zip doesn't contain the 'Terra' folder structure
+        cd ".\Terra\bin\x64\Release\Terra"
+        # Zip everything in the current folder into a file located in the root directory
+        Compress-Archive -Path "*" -DestinationPath "..\..\..\..\..\latest.zip" -Force
         
     - name: Upload Release
       uses: softprops/action-gh-release@v2
