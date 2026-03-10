@@ -31,10 +31,10 @@ jobs:
 
     - name: Create Release Package
       run: |
-        # Move into the folder so the zip doesn't contain the 'Terra' folder structure
+        # Go to the actual output folder
         cd ".\Terra\bin\x64\Release\Terra"
-        # Zip everything in the current folder into a file located in the root directory
-        Compress-Archive -Path "*" -DestinationPath "..\..\..\..\..\latest.zip" -Force
+        # Explicitly grab only the files (dll, json) to avoid nesting
+        Get-ChildItem -File | Compress-Archive -DestinationPath "..\..\..\..\..\latest.zip" -Force
         
     - name: Upload Release
       uses: softprops/action-gh-release@v2
