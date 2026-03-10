@@ -1,0 +1,19 @@
+[
+  {
+    "Author": "XenaProtocol",
+    "Name": "Terra",
+    "InternalName": "Terra",
+    "Description": "Automated gardening manager for tending and harvesting crops.",
+    "Punchline": "Because gardening shouldn't be a full-time job.",
+    "ID": "833ca8e6-16ec-4ebd-82d1-643180003d0f",
+    "DownloadLinkInstall": "https://github.com/XenaProtocol/Terra/raw/main/latest.zip",
+    "AssemblyVersion": "1.0.0.0",
+    "IsTestingExclusive": false,
+    "ApplicableVersion": "any",
+    "Tags": [
+      "gardening",
+      "utility",
+      "automation"
+    ]
+  }
+]

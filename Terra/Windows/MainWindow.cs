@@ -15,7 +15,7 @@ public class MainWindow : Window, IDisposable
     private readonly Plugin plugin;
 
     public MainWindow(Plugin plugin, string goatImagePath)
-        : base("Farming Manager##With a hidden ID", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
+        : base("Terra##With a hidden ID", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
         {
