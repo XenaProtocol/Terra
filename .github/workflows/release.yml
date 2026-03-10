@@ -29,7 +29,7 @@ jobs:
 
     - name: Create Release Package
       run: |
-        Compress-Archive -Path ".\Terra\bin\x64\Release\Terra\*" -DestinationPath "latest.zip"
+        Compress-Archive -Path ".\Terra\bin\x64\Release\Terra\*" -DestinationPath "latest.zip" -Force
         
     - name: Upload Release
       uses: softprops/action-gh-release@v2
