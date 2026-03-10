@@ -1,0 +1,40 @@
+name: Terra Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+        submodules: recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Download Dalamud
+      run: |
+        Invoke-WebRequest -Uri https://goatcorp.github.io/dalamud-distrib/latest.zip -OutFile latest.zip
+        Expand-Archive -Force latest.zip "$env:AppData\XIVLauncher\addon\Hooks\dev"
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Create Release Package
+      run: |
+        Compress-Archive -Path ".\Terra\bin\x64\Release\Terra\*" -DestinationPath "latest.zip"
+        
+    - name: Upload Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: latest.zip
+        tag_name: ${{ github.ref_name }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
