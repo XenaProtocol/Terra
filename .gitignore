@@ -1,0 +1,22 @@
+# Visual Studio Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio 2022+ files
+.vs/
+
+# Dalamud dev-distrib (if you download it locally)
+latest.zip
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# If you have secrets or local config
+*.config.json.local

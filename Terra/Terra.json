@@ -1,0 +1,10 @@
+{
+  "Author": "Xena",
+  "Name": "Terra",
+  "InternalName": "Terra",
+  "Description": "Automated gardening manager for Thav Onions and more.",
+  "Punchline": "Because standing in the garden shouldn't be a full-time job.",
+  "ApplicableVersion": "any",
+  "RepoUrl": "",
+  "Tags": [ "gardening", "utility" ]
+}
