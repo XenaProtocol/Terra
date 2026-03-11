@@ -29,23 +29,13 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
 
-    - name: Create Release Package
-      run: |
-        # 1. Create a clean staging folder
-        New-Item -ItemType Directory -Force -Path ".\publish"
-        
-        # 2. Copy the files into the staging folder
-        # Using a wildcard to grab the files from the output directory
-        Copy-Item -Path ".\Terra\bin\x64\Release\Terra\Terra.dll" -Destination ".\publish\"
-        Copy-Item -Path ".\Terra\bin\x64\Release\Terra\Terra.json" -Destination ".\publish\"
-        
-        # 3. Zip ONLY the contents of the publish folder
-        Compress-Archive -Path ".\publish\*" -DestinationPath "latest.zip" -Force
+    # Notice the Create Release Package step is completely gone!
         
     - name: Upload Release
       uses: softprops/action-gh-release@v2
       with:
-        files: latest.zip
+        # We just point the uploader directly to the Packager's finished zip!
+        files: .\Terra\bin\x64\Release\Terra\latest.zip
         tag_name: ${{ github.ref_name }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
