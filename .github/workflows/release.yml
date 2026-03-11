@@ -34,8 +34,8 @@ jobs:
     - name: Upload Release
       uses: softprops/action-gh-release@v2
       with:
-        # We just point the uploader directly to the Packager's finished zip!
-        files: .\Terra\bin\x64\Release\Terra\latest.zip
+        # Flipped to forward slashes!
+        files: Terra/bin/x64/Release/Terra/latest.zip
         tag_name: ${{ github.ref_name }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
