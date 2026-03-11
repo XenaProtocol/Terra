@@ -31,10 +31,16 @@ jobs:
 
     - name: Create Release Package
       run: |
-        # Go to the actual output folder
-        cd ".\Terra\bin\x64\Release\Terra"
-        # Explicitly grab only the files (dll, json) to avoid nesting
-        Get-ChildItem -File | Compress-Archive -DestinationPath "..\..\..\..\..\latest.zip" -Force
+        # 1. Create a clean staging folder
+        New-Item -ItemType Directory -Force -Path ".\publish"
+        
+        # 2. Copy the files into the staging folder
+        # Using a wildcard to grab the files from the output directory
+        Copy-Item -Path ".\Terra\bin\x64\Release\Terra\Terra.dll" -Destination ".\publish\"
+        Copy-Item -Path ".\Terra\bin\x64\Release\Terra\Terra.json" -Destination ".\publish\"
+        
+        # 3. Zip ONLY the contents of the publish folder
+        Compress-Archive -Path ".\publish\*" -DestinationPath "latest.zip" -Force
         
     - name: Upload Release
       uses: softprops/action-gh-release@v2
